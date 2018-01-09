@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'employee-count',
@@ -7,7 +7,20 @@
 })
 
 export class EmployeeCountComponent {
-    all: number = 10;
-    female: number = 5;
-    male: number = 5;
+    @Input()
+    all: number;
+    @Input()
+    female: number;
+    @Input()
+    male: number;
+
+    selectedFilterOption: string = 'All';
+
+    @Output()
+    countFilterSelectionChange: EventEmitter<string> = new EventEmitter<string>();
+
+    onFilterChange() {
+        this.countFilterSelectionChange.emit(this.selectedFilterOption);
+        //console.log(this.selectedFilterOption);
+    }
 }

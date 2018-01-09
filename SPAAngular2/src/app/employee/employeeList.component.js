@@ -12,15 +12,29 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var EmployeeListComponent = /** @class */ (function () {
     function EmployeeListComponent() {
+        this.selectedEmployeeFilterOption = 'All';
         this.employees = [
             { code: 'emp101', name: 'Tom', gender: 'Male', annualsalary: 12.5, dateofbirth: '2/12/1983' },
             { code: 'emp102', name: 'Suzi', gender: 'Female', annualsalary: 2.9, dateofbirth: '10/25/1988' },
             { code: 'emp103', name: 'Benson', gender: 'Male', annualsalary: 5.5, dateofbirth: '5/7/1990' },
-            { code: 'emp104', name: 'Fluke', gender: 'Female', annualsalary: 2.5, dateofbirth: '7/2/1997' }
+            { code: 'emp104', name: 'Fluke', gender: 'Female', annualsalary: 2.5, dateofbirth: '7/2/1997' },
+            { code: 'emp105', name: '8Ball', gender: 'Female', annualsalary: 2.5, dateofbirth: '7/2/1997' }
         ];
     }
+    EmployeeListComponent.prototype.onEmployeeFilterChange = function (value) {
+        this.selectedEmployeeFilterOption = value;
+    };
     EmployeeListComponent.prototype.trckByEmployeeCode = function (index, emp) {
         return emp.code;
+    };
+    EmployeeListComponent.prototype.getTotalEmployees = function () {
+        return this.employees.length;
+    };
+    EmployeeListComponent.prototype.getTotalMaleEmployees = function () {
+        return this.employees.filter(function (e) { return e.gender === 'Male'; }).length;
+    };
+    EmployeeListComponent.prototype.getTotalFemaleEmployees = function () {
+        return this.employees.filter(function (e) { return e.gender === 'Female'; }).length;
     };
     EmployeeListComponent = __decorate([
         core_1.Component({

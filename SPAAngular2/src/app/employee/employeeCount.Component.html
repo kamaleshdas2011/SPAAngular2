@@ -1,15 +1,10 @@
-﻿<span>Filter</span><label class="container">
-    All({{all}})
-    <input type="radio" name="count">
-    <span class="checkmark"></span>
-</label>
-<label class="container">
-    Male({{male}})
-    <input type="radio" name="count">
-    <span class="checkmark"></span>
-</label>
-<label class="container">
-    Female({{female}})
-    <input type="radio" name="count">
-    <span class="checkmark"></span>
-</label>
+﻿<span>Filter</span>
+
+<input type="radio" name="count" value="All" [(ngModel)]="selectedFilterOption" (change)="onFilterChange()">
+All({{all}})
+
+<input type="radio" name="count" value="Male" [(ngModel)]="selectedFilterOption" (change)="onFilterChange()">
+Male({{male}})
+
+<input type="radio" name="count" value="Female" [(ngModel)]="selectedFilterOption" (change)="onFilterChange()">
+Female({{female}})
