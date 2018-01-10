@@ -10,16 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var employee_service_1 = require("./employee.service");
 var EmployeeListComponent = /** @class */ (function () {
-    function EmployeeListComponent() {
+    function EmployeeListComponent(_empService) {
+        this._empService = _empService;
         this.selectedEmployeeFilterOption = 'All';
-        this.employees = [
-            { code: 'emp101', name: 'Tom', gender: 'Male', annualsalary: 12.5, dateofbirth: '2/12/1983' },
-            { code: 'emp102', name: 'Suzi', gender: 'Female', annualsalary: 2.9, dateofbirth: '10/25/1988' },
-            { code: 'emp103', name: 'Benson', gender: 'Male', annualsalary: 5.5, dateofbirth: '5/7/1990' },
-            { code: 'emp104', name: 'Fluke', gender: 'Female', annualsalary: 2.5, dateofbirth: '7/2/1997' },
-            { code: 'emp105', name: '8Ball', gender: 'Female', annualsalary: 2.5, dateofbirth: '7/2/1997' }
-        ];
+        this.employees = this._empService.getAllEmployess();
     }
     EmployeeListComponent.prototype.onEmployeeFilterChange = function (value) {
         this.selectedEmployeeFilterOption = value;
@@ -40,9 +36,10 @@ var EmployeeListComponent = /** @class */ (function () {
         core_1.Component({
             selector: 'employee-list',
             templateUrl: 'app/employee/employeeList.component.html',
-            styleUrls: ['app/employee/employeeList.component.css']
+            styleUrls: ['app/employee/employeeList.component.css'],
+            providers: [employee_service_1.EmployeeService]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [employee_service_1.EmployeeService])
     ], EmployeeListComponent);
     return EmployeeListComponent;
 }());
