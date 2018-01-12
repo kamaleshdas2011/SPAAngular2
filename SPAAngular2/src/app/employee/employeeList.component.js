@@ -15,8 +15,12 @@ var EmployeeListComponent = /** @class */ (function () {
     function EmployeeListComponent(_empService) {
         this._empService = _empService;
         this.selectedEmployeeFilterOption = 'All';
-        this.employees = this._empService.getAllEmployess();
     }
+    EmployeeListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._empService.getAllEmployess()
+            .subscribe(function (employeeData) { return _this.employees = employeeData; });
+    };
     EmployeeListComponent.prototype.onEmployeeFilterChange = function (value) {
         this.selectedEmployeeFilterOption = value;
     };

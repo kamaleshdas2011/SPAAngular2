@@ -29,6 +29,9 @@
 
                 </tr>
             </ng-container>
+            <tr *ngIf="!employees">
+                <td colspan="6">{{serviceStatus}}</td>
+            </tr>
             <tr *ngIf="!employees || employees.length==0">
                 <td colspan="6">Oops!</td>
             </tr>

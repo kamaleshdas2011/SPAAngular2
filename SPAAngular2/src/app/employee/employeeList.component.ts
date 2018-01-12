@@ -11,12 +11,15 @@ import { EmployeeService } from './employee.service';
 
 export class EmployeeListComponent implements OnInit {
     ngOnInit() {
-        this.employees = this._empService.getAllEmployess()
-            .subscribe((employeeData) => this.employees = employeeData);
+        this._empService.getAllEmployess()
+            .subscribe((employeeData) => this.employees = employeeData,
+            (error) => { this.serviceStatus = "Error occurred, please try again." }
+        );
     }
     employees: Employee[];
 
     selectedEmployeeFilterOption: string = 'All';
+    serviceStatus: string = "Loading data, please wait...";
 
     constructor(private _empService: EmployeeService) {
         
