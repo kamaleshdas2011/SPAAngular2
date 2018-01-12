@@ -11,14 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
+var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/map");
+require("rxjs/add/operator/catch");
 var EmployeeService = /** @class */ (function () {
     function EmployeeService(_http) {
         this._http = _http;
     }
     EmployeeService.prototype.getAllEmployess = function () {
         return this._http.get("http://localhost:31704/api/employee")
-            .map(function (response) { return response.json(); });
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    EmployeeService.prototype.handleError = function (error) {
+        console.error(error);
+        return Observable_1.Observable.throw(error);
     };
     EmployeeService = __decorate([
         core_1.Injectable(),

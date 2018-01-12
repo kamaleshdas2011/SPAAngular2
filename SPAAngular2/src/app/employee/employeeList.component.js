@@ -15,11 +15,12 @@ var EmployeeListComponent = /** @class */ (function () {
     function EmployeeListComponent(_empService) {
         this._empService = _empService;
         this.selectedEmployeeFilterOption = 'All';
+        this.serviceStatus = "Loading data, please wait...";
     }
     EmployeeListComponent.prototype.ngOnInit = function () {
         var _this = this;
         this._empService.getAllEmployess()
-            .subscribe(function (employeeData) { return _this.employees = employeeData; });
+            .subscribe(function (employeeData) { return _this.employees = employeeData; }, function (error) { _this.serviceStatus = "Error occurred, please try again."; });
     };
     EmployeeListComponent.prototype.onEmployeeFilterChange = function (value) {
         this.selectedEmployeeFilterOption = value;
