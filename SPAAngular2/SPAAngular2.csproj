@@ -84,7 +84,9 @@
     <Content Include="src\app\Content\bootstrap-theme.min.css.map" />
     <Content Include="src\app\Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="src\app\Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="src\app\employee\employee.component.html" />
     <Content Include="src\app\employee\employeeCount.component.css" />
     <Content Include="src\app\employee\employeeCount.component.html" />
     <Content Include="src\app\Scripts\bootstrap.js" />
@@ -95,7 +97,6 @@
     <Content Include="src\app\employee\employeeList.component.html" />
     <Content Include="src\tsconfig.json" />
     <Content Include="tslint.json" />
-    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <Content Include="src\app\Scripts\jquery-1.9.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -120,11 +121,14 @@
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\employee\employee.component.ts" />
     <TypeScriptCompile Include="src\app\employee\employee.service.ts" />
     <TypeScriptCompile Include="src\app\employee\employee.ts" />
     <TypeScriptCompile Include="src\app\employee\employeeCount.component.ts" />
     <TypeScriptCompile Include="src\app\employee\employeeList.component.ts" />
     <TypeScriptCompile Include="src\app\employee\employeeTitle.pipe.ts" />
+    <TypeScriptCompile Include="src\app\home\home.component.ts" />
+    <TypeScriptCompile Include="src\app\others\pageNotFound.component.ts" />
     <TypeScriptCompile Include="src\main.ts" />
   </ItemGroup>
   <ItemGroup>

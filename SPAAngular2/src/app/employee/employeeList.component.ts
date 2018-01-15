@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { Employee } from './employee';
+import { IEmployee } from './employee';
 import { EmployeeService } from './employee.service';
 
 @Component({
@@ -11,12 +11,12 @@ import { EmployeeService } from './employee.service';
 
 export class EmployeeListComponent implements OnInit {
     ngOnInit() {
-        this._empService.getAllEmployess()
+        this._empService.getAllEmployees()
             .subscribe((employeeData) => this.employees = employeeData,
             (error) => { this.serviceStatus = "Error occurred, please try again." }
         );
     }
-    employees: Employee[];
+    employees: IEmployee[];
 
     selectedEmployeeFilterOption: string = 'All';
     serviceStatus: string = "Loading data, please wait...";
@@ -25,6 +25,7 @@ export class EmployeeListComponent implements OnInit {
         
 
     }
+    
 
     onEmployeeFilterChange(value: string) {
         this.selectedEmployeeFilterOption = value;

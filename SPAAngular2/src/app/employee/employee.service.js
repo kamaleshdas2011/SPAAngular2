@@ -18,8 +18,13 @@ var EmployeeService = /** @class */ (function () {
     function EmployeeService(_http) {
         this._http = _http;
     }
-    EmployeeService.prototype.getAllEmployess = function () {
+    EmployeeService.prototype.getAllEmployees = function () {
         return this._http.get("http://localhost:31704/api/employee")
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    EmployeeService.prototype.getEmployeeByCode = function (code) {
+        return this._http.get("http://localhost:31704/api/employee/" + code)
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };

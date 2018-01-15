@@ -1,0 +1,26 @@
+﻿<div>
+    <table *ngIf="employee" class="table table-bordered table-responsive">
+        <caption>Employee Details</caption>
+        <tbody>
+            <tr>
+                <td>Name</td>
+                <td>{{employee.name}}</td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>{{employee.gender}}</td>
+            </tr>
+            <tr>
+                <td>Annual salary</td>
+                <td>{{employee.annualsalary | currency:'INR':true:'1.3-3'}}</td>
+            </tr>
+            <tr>
+                <td>Date of birth</td>
+                <td>{{employee.dateofbirth | date:'dd-MMM-y'}}</td>
+            </tr>           
+        </tbody>
+    </table>
+    <div *ngIf="!employee">{{serviceStatus}}</div>
+    
+</div>
+<a routerLink="employees">Back to list</a>

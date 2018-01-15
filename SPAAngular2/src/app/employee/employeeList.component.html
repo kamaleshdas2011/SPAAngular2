@@ -1,8 +1,10 @@
 ﻿<div>
-    <employee-count [all]="getTotalEmployees()"
+    <employee-count *ngIf="employees" 
+                    [all]="getTotalEmployees()"
                     [female]="getTotalFemaleEmployees()"
                     [male]="getTotalMaleEmployees()"
                     (countFilterSelectionChange)="onEmployeeFilterChange($event)"></employee-count>
+    
 </div>
 <div>
     <table>
@@ -19,7 +21,9 @@
         </thead>
         <tbody>
             <ng-container *ngFor="let emp of employees; let i = index; trackBy: trckByEmployeeCode">
-                <tr *ngIf="selectedEmployeeFilterOption=='All' || selectedEmployeeFilterOption==emp.gender">
+                
+                <tr style="cursor:pointer;" *ngIf="selectedEmployeeFilterOption=='All' || selectedEmployeeFilterOption==emp.gender"
+                    [routerLink]="['/employees',emp.code]">
                     <td>{{i+1}}</td>
                     <td>{{emp.code | uppercase}}</td>
                     <td>{{emp.name | employeeTitle: emp.gender}}</td>

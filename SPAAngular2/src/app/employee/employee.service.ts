@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { Employee } from './employee';
+import { IEmployee, Employee } from './employee';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -12,9 +12,14 @@ export class EmployeeService {
 
     }
 
-    getAllEmployess(): Observable<Employee[]>{
+    getAllEmployees(): Observable<IEmployee[]>{
         return this._http.get("http://localhost:31704/api/employee")
-            .map((response: Response) => <Employee[]>response.json())
+            .map((response: Response) => <IEmployee[]>response.json())
+            .catch(this.handleError);
+    }
+    getEmployeeByCode(code: string): Observable<IEmployee> {
+        return this._http.get("http://localhost:31704/api/employee/" + code)
+            .map((response: Response) => <IEmployee>response.json())
             .catch(this.handleError);
     }
     handleError(error: Response) {

@@ -19,7 +19,7 @@ var EmployeeListComponent = /** @class */ (function () {
     }
     EmployeeListComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this._empService.getAllEmployess()
+        this._empService.getAllEmployees()
             .subscribe(function (employeeData) { return _this.employees = employeeData; }, function (error) { _this.serviceStatus = "Error occurred, please try again."; });
     };
     EmployeeListComponent.prototype.onEmployeeFilterChange = function (value) {
