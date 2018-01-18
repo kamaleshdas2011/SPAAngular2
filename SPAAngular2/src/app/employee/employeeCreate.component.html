@@ -1,0 +1,132 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        Add New Employee
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" novalidate (ngSubmit)="save()" [formGroup]="employeeLoginForm">
+            <fieldset>
+                <div class="form-group"
+                     [ngClass]="{'has-error':(employeeLoginForm.get('name').touched || employeeLoginForm.get('name').dirty)
+                     && !employeeLoginForm.get('name').valid }">
+                    <label class="col-md-2 control-label" for="nameId">Full Name: </label>
+                    <div class="col-md-8">
+                        <input class="form-control" name="name" id="nameId" placeholder="Full Name" type="text" formControlName="name" />
+                        <span class="help-block" *ngIf="(employeeLoginForm.get('name').touched || employeeLoginForm.get('name').dirty) &&
+                         employeeLoginForm.get('name').errors">
+                            <span *ngIf="!employeeLoginForm.get('name').errors.required">
+                                Please enter your name.
+                            </span>
+                            <span *ngIf="!employeeLoginForm.get('name').errors.minlength">
+                                Must be atleast 4 characters.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div formGroupName="emailGroup"
+                     [ngClass]="{'has-error': employeeLoginForm.get('emailGroup').errors }">
+
+                    <div class="form-group"
+                         [ngClass]="{'has-error':(employeeLoginForm.get('emailGroup.email').touched || 
+                         employeeLoginForm.get('emailGroup.email').dirty)
+                     && !employeeLoginForm.get('emailGroup.email').valid }">
+                        <label class="col-md-2 control-label"
+                               for="emailId">Email</label>
+
+                        <div class="col-md-8">
+                            <input class="form-control"
+                                   id="emailId"
+                                   type="email"
+                                   placeholder="Email (required)"
+                                   formControlName="email" />     
+                            <span class="help-block" *ngIf="emailMessage">
+                                {{emailMessage}}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group"
+                         [ngClass]="{'has-error': (employeeLoginForm.get('emailGroup.confirmEmail').touched ||
+                                                  employeeLoginForm.get('emailGroup.confirmEmail').dirty) &&
+                                                  !employeeLoginForm.get('emailGroup.confirmEmail').valid }">
+                        <label class="col-md-2 control-label"
+                               for="confirmEmailId">Confirm Email</label>
+
+                        <div class="col-md-8">
+                            <input class="form-control"
+                                   id="confirmEmailId"
+                                   type="email"
+                                   placeholder="Confirm Email (required)"
+                                   formControlName="confirmEmail" />
+                            <span class="help-block" *ngIf="(employeeLoginForm.get('emailGroup.confirmEmail').touched ||
+                                                            employeeLoginForm.get('emailGroup.confirmEmail').dirty) &&
+                                                            (employeeLoginForm.get('emailGroup.confirmEmail').errors ||
+                                                             employeeLoginForm.get('emailGroup').errors)">
+                                <span *ngIf="employeeLoginForm.get('emailGroup.confirmEmail').errors?.required">
+                                    Please confirm your email address.
+                                </span>
+                                <span *ngIf="employeeLoginForm.get('emailGroup').errors?.match">
+                                    The confirmation does not match the email address.
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group" [ngClass]="{'has-error': !employeeLoginForm.get('phone').valid }">
+                    <label class="col-md-2 control-label" for="phoneId">Phone: </label>
+                    <div class="col-md-8">
+                        <input class="form-control" name="phone" id="phoneId" placeholder="Phone number" type="text" formControlName="phone" />
+                        <span class="help-block" *ngIf="employeeLoginForm.get('phone').errors">
+                            <span *ngIf="employeeLoginForm.get('phone').errors.required">
+                                Please enter your phone number.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Send Notifications: </label>
+                    <div class="col-md-8">
+                        <label class="radio-inline">
+                            <input type="radio" value="email" formControlName="notification">Email
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" value="text" formControlName="notification">Text
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group"
+                     [ngClass]="{'has-error': (employeeLoginForm.get('rating').touched ||
+                                              employeeLoginForm.get('rating').dirty) &&
+                                              !employeeLoginForm.get('rating').valid }">
+                    <label class="col-md-2 control-label"
+                           for="ratingId">Rating</label>
+
+                    <div class="col-md-3">
+                        <input class="form-control"
+                               id="ratingId"
+                               type="number"
+                               formControlName="rating" />
+                        <span class="help-block" *ngIf="(employeeLoginForm.get('rating').touched
+                                                         || employeeLoginForm.get('rating').dirty) &&
+                                                         employeeLoginForm.get('rating').errors">
+                            <span *ngIf="employeeLoginForm.get('rating').errors.range">
+                                Please rate your experience from 1 to 5.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4 col-md-offset-2">
+                        <button class="btn btn-primary" type="submit" [disabled]="!employeeLoginForm.valid">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<br />dirty: {{employeeLoginForm.dirty}}
+<br />touched: {{employeeLoginForm.touched}}
+<br />valid: {{employeeLoginForm.valid}}
+<br />value: {{employeeLoginForm.value | json}}

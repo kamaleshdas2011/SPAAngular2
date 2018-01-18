@@ -14,7 +14,7 @@ var AppComponent = /** @class */ (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n<div style=\"padding:5px;\">\n        <ul class=\"nav nav-tabs\">\n            <li routerLinkActive=\"active\"><a routerLink=\"home\">Home</a></li>\n            <li routerLinkActive=\"active\"><a routerLink=\"employees\">Employees</a></li>\n        </ul>\n<router-outlet></router-outlet>\n\n    </div>\n                \n              ",
+            template: "\n<div style=\"padding:5px;\">\n        <ul class=\"nav nav-tabs\">\n            <li routerLinkActive=\"active\"><a routerLink=\"home\">Home</a></li>\n            <li routerLinkActive=\"active\"><a routerLink=\"employees\">Employees</a></li>\n            <li routerLinkActive=\"active\"><a routerLink=\"addemployee\">Add Employees</a></li>\n        </ul>\n<router-outlet></router-outlet>\n\n    </div>\n                \n              ",
         })
     ], AppComponent);
     return AppComponent;

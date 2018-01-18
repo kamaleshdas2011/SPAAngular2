@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
         <ul class="nav nav-tabs">
             <li routerLinkActive="active"><a routerLink="home">Home</a></li>
             <li routerLinkActive="active"><a routerLink="employees">Employees</a></li>
+            <li routerLinkActive="active"><a routerLink="addemployee">Add Employees</a></li>
         </ul>
 <router-outlet></router-outlet>
 
